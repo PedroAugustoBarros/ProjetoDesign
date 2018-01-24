@@ -8,10 +8,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class DetalhesFragment extends Fragment {
 
 //    private OnFragmentInteractionListener mListener;
+
+    TextView textView_det_titulo;
+    TextView textView_det_corpo;
+    ImageView imageView_det;
+    int posiçãoID;
 
     public DetalhesFragment() {
         // Required empty public constructor
@@ -24,13 +31,35 @@ public class DetalhesFragment extends Fragment {
         Bundle bundle = this.getArguments();
         String myValue = bundle.getString("message");
         Log.d("Valor",""+myValue);
+
+
+        posiçãoID=Integer.parseInt(myValue);
+
+//        for (int i = 0; i < MyData.nameArray.length; i++) {
+//                if (selectedName.equals(MyData.nameArray[i])) {
+//                    selectedItemId = MyData.id_[i];
+//                }
+//            }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detalhes, container, false);
+
+        View view =inflater.inflate(R.layout.fragment_detalhes, container, false);
+
+
+        textView_det_titulo = (TextView) view.findViewById(R.id.textView_det_titulo);
+        textView_det_corpo = (TextView) view.findViewById(R.id.textView_det_corpo);
+        imageView_det = (ImageView) view.findViewById(R.id.imageView_det);
+
+        textView_det_titulo.setText(MyData.nameArray[posiçãoID]);
+
+
+        return view;
+
     }
 
 

@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewDebug;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -109,8 +110,10 @@ public class MainActivity extends AppCompatActivity
             mFragmentManager = getSupportFragmentManager();
             FragmentTransaction ft = mFragmentManager.beginTransaction();
 
+            int selectedItemPosition = recyclerView.getChildPosition(v);
+            String textoEnviar= Integer.toString(selectedItemPosition);
             Bundle bundle = new Bundle();
-            String myMessage = "Stackoverflow is cool!";
+            String myMessage = textoEnviar;
             bundle.putString("message", myMessage );
 //
             DetalhesFragment compFragment = (DetalhesFragment) getSupportFragmentManager().findFragmentByTag("validar");
