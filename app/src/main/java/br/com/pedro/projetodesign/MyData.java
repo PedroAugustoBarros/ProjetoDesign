@@ -25,4 +25,19 @@ public class MyData {
 //            R.drawable.jellybean, R.drawable.kitkat, R.drawable.lollipop,R.drawable.marsh};
 
     static Integer[] id_ = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+
+    static String[] enderecoArray = {"Endereço: Praça Joaquim Nabuco, 147 - Santo Antônio, Recife - PE, 50010-480\n" +
+            "Telefone: (81) 3224-7977\n", "Endereço: R. Antônio Falcão, 55 - Boa Viagem, Recife - PE, 51020-240\n" +
+            "Telefone: (81) 3031-5396\n", "Endereço: R. Mário Campelo, 700 - Várzea, Recife - PE, 50741-430\n" +
+            "Telefone: (81) 99201-9787\n", "Endereço: Av. Antônio de Goes, 62 - Pina, Recife - PE, 51011-000\n" +
+            "Telefone: (81) 3465-1847\n",
+            "Endereço: R. da Hora, 820 - Espinheiro, Recife - PE, 52020-010\n" +
+                    "Telefone: (81) 3423-1529\n", "Endereço: Rua Dr. Nilo Dornelas Câmara, 16 - Boa Viagem, Recife - PE, 51021-400\n" +
+            "Telefone: (81) 3048-5886\n", "Endereço: R. Petrolina, 19 - Boa Viagem, Recife - PE, 51021-250\n" +
+            "Telefone: (81) 3465-2224\n","Endereço: R. Xavier Marquês, 134 - Aflitos, Recife - PE, 52050-230\n" +
+            "Telefone: (81) 3241-9589\n", "Endereço: Av. Boa Viagem, 760 - Pina, Recife - PE, 50050-390\n" +
+            "Telefone: (81) 3127-2510\n", "Endereço: Av. Eng. Domingos Ferreira, 4140 - Boa Viagem, Recife - PE, 51021-040\n" +
+            "Telefone: (81) 3463-4141\n"};
+
 }

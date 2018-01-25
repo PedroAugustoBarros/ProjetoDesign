@@ -22,6 +22,7 @@ public class DetalhesFragment extends Fragment {
 
     TextView textView_det_titulo;
     TextView textView_det_corpo;
+    TextView textView_det_endereco;
     ImageView imageView_det;
     RatingBar ratingBar_detalhes_total;
 
@@ -58,6 +59,7 @@ public class DetalhesFragment extends Fragment {
 
         textView_det_titulo = (TextView) view.findViewById(R.id.textView_det_titulo);
         textView_det_corpo = (TextView) view.findViewById(R.id.textView_det_corpo);
+        textView_det_endereco = (TextView) view.findViewById(R.id.textView_det_endereco);
         imageView_det = (ImageView) view.findViewById(R.id.imageView_det);
 
         ratingBar_detalhes_total = (RatingBar)view.findViewById(R.id.ratingBar_detalhes_total);
@@ -71,6 +73,8 @@ public class DetalhesFragment extends Fragment {
         textView_det_titulo.setText(MyData.nameArray[posiçãoID]);
         textView_det_corpo.setText(MyData.versionArray[posiçãoID]);
         imageView_det.setImageResource(MyData.drawableArray[posiçãoID]);
+
+        textView_det_endereco.setText(MyData.enderecoArray[posiçãoID]);
 
 
 

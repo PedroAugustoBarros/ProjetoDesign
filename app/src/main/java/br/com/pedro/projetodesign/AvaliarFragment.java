@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ public class AvaliarFragment extends Fragment {
     TextView textView_titulo_avaliar;
     TextView textView_corpo_avaliar;
     ImageView imageView_avaliar;
+    Button butt_avaliar_comentario;
 
     RatingBar ratingBar_avaliar_total;
 
@@ -51,6 +54,8 @@ public class AvaliarFragment extends Fragment {
         textView_titulo_avaliar = (TextView) view.findViewById(R.id.textView_titulo_avaliar);
         textView_corpo_avaliar = (TextView) view.findViewById(R.id.textView_corpo_avaliar);
         imageView_avaliar = (ImageView) view.findViewById(R.id.imageView_avaliar);
+
+        butt_avaliar_comentario = (Button) view.findViewById(R.id.butt_avaliar_comentario);
 
         final RatingBar ratingBar_estacionamento = (RatingBar)view.findViewById(R.id.ratingBar_estacionamento);
         final RatingBar ratingBar_banheiros = (RatingBar)view.findViewById(R.id.ratingBar_banheiros);
@@ -114,6 +119,35 @@ public class AvaliarFragment extends Fragment {
                 getActivity().onBackPressed();
             }
         });
+
+
+        butt_avaliar_comentario.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                FragmentManager mFragmentManager;
+                mFragmentManager = getFragmentManager();
+                FragmentTransaction ft = mFragmentManager.beginTransaction();
+
+                ComentarioFragment comentFragment = (ComentarioFragment) getFragmentManager().findFragmentByTag("comentario");
+
+                if (getFragmentManager().findFragmentByTag("comentario") != null) {
+                    ft.remove(comentFragment);
+                }
+
+                if (comentFragment == null) {
+                    comentFragment = new ComentarioFragment();
+
+                }
+                ft.replace(R.id.frameLayoutFragment, comentFragment, "comentario");
+                ft.addToBackStack("comentario");
+                ft.commit();
+            }
+        });
+
+
+
         return view;
     }
 

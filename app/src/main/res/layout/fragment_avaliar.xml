@@ -56,6 +56,12 @@
                     android:numStars="5"
                     android:stepSize="1" />
 
+                <Button
+                    android:id="@+id/butt_avaliar_comentario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Comentários" />
+
                 <TextView
                     android:id="@+id/textView_estacionamento"
                     android:layout_width="match_parent"
