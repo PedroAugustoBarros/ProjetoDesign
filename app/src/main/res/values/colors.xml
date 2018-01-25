@@ -6,4 +6,38 @@
 
     <color name="grey_300">#E0E0E0</color>
     <color name="color_white">#fefefe</color>
+
+
+
+    <color name="cor_background">#546e7a</color>
+    <color name="cor_menu_bar">#37474f</color>
+    <color name="cor_barra_calculadora">#1c2f36</color>
+    <color name="cor_texto_lime">#eeff48</color>
+    <color name="cor_branco">#eeeeee</color>
+    <color name="cor_cinza">#a9a9a9</color>
+    <color name="cor_fundo_list">#455a64</color>
+    <color name="cor_cinza_escuro">#424242</color>
+
+
+
+
+    <color name="sga_cor_barra_principal">#37474f</color>
+    <color name="sga_cor_calculadora">#273238</color>
+    <color name="sga_cor_fundo">#556e7a</color>
+    <color name="sga_cor_texto">#aeea00</color>
+    <color name="sga_cor_cotacao">#c6ff00</color>
+    <color name="sga_cor_selecionado_azul">#2979ff</color>
+    <color name="sga_cor_card_lista">#455a65</color>
+    <color name="sga_cor_branco">#ffffff</color>
+    <color name="sga_cor_cinza">#a9a9a9</color>
+
+    <color name="sga_barra_lateral">#212121</color>
+    <color name="sga_amarelo">#ffff00</color>
+    <color name="sga_form_box">#424242</color>
+    <color name="sga_cor_ativado_azul">#2962ff</color>
+    <color name="sga_cor_pressionado_azul">#448aff</color>
+    <color name="sga_cinza_claro">#e0e0e0</color>
+
+
+
 </resources>
