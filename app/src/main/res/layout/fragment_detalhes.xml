@@ -8,32 +8,55 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_bright">
 
-        <ImageView
-            android:id="@+id/imageView_det"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_menu_camera" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView_det_titulo"
+            <ImageView
+                android:id="@+id/imageView_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_menu_camera" />
+
+            <TextView
+                android:id="@+id/textView_det_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView_det_corpo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <RatingBar
+                android:id="@+id/ratingBar_detalhes_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="1" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/butt_avaliar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/textView_det_corpo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
-
-    </LinearLayout>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Avaliar Local" />
+    </RelativeLayout>
 
 </FrameLayout>
