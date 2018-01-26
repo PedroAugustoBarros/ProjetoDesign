@@ -31,6 +31,7 @@ public class ComentarioFragment extends Fragment {
     TextView textView_corpo_comentar;
     TextView textView_Comentarios_tudo;
     ImageView imageView_comentar;
+    String nomeUsuario;
 
     String nomeArquivo;
     int posiçãoID;
@@ -47,6 +48,18 @@ public class ComentarioFragment extends Fragment {
 
         valorSelecionado = ((MainActivity) getActivity()).valorSelecionado();
         posiçãoID = Integer.parseInt(valorSelecionado);
+
+
+        try {
+            SharedPreferences settings = getActivity().getSharedPreferences("Nome Login", 0);
+            nomeUsuario = (settings.getString("PrefUsuario", ""));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+//                            edtUsuario.setText("");
+        }
+
+
     }
 
 
@@ -131,11 +144,14 @@ public class ComentarioFragment extends Fragment {
 
 //                Toast.makeText(getApplicationContext(), input.getText().toString().trim(),Toast.LENGTH_SHORT).show();
 
+
+
+
                         FileOutputStream fos = null;
                         try {
                             comentariosTudo=textView_Comentarios_tudo.getText().toString();
-                            String texto=comentariosTudo+"\n\n"+"NOME Pedro \n"+input.getText().toString()+"\n-------------------\n";
-                            textView_Comentarios_tudo.setText(comentariosTudo+"\n\n"+"NOME Pedro \n"+input.getText().toString()+"\n-------------------\n");
+                            String texto=comentariosTudo+"\n\n"+nomeUsuario+"\n"+input.getText().toString()+"\n_____________________________________\n";
+                            textView_Comentarios_tudo.setText(comentariosTudo+"\n"+nomeUsuario+"\n"+input.getText().toString()+"\n_____________________________________\n");
 
                             fos = getActivity().openFileOutput(nomeArquivo, Context.MODE_PRIVATE);
                             fos.write(texto.getBytes());

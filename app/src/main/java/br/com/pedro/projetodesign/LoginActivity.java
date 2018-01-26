@@ -41,7 +41,7 @@ public class LoginActivity extends ActionBarActivity {
     private ImageView imageView_LogoBancas;
 
     public static final String PREFS_NAME = "Nome Login";
-    public static final String PREFS_NAME_COD = "Codigo Banca";
+    public static final String PREFS_NAME_COD = "Senha";
 
     String login;
 
@@ -59,24 +59,24 @@ public class LoginActivity extends ActionBarActivity {
         String versionName = BuildConfig.VERSION_NAME;
         txtVersao.setText("Versão " + versionName);
 
-//        //Recuperar login e colocar no Edittext Login
-//        try {
-//            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-//            edtUsuario.setText(settings.getString("PrefUsuario", ""));
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            edtUsuario.setText("");
-//        }
-//
-//        try {
-//            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-//            edtCodAcesso.setText(settings.getString("Codigo Banca", ""));
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            edtCodAcesso.setText("");
-//        }
+        //Recuperar login e colocar no Edittext Login
+        try {
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+            edtUsuario.setText(settings.getString("PrefUsuario", ""));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            edtUsuario.setText("");
+        }
+
+        try {
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+            edtSenha.setText(settings.getString("Senha", ""));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            edtSenha.setText("");
+        }
 
 
 
@@ -105,7 +105,22 @@ public class LoginActivity extends ActionBarActivity {
                      String valor_versao = BuildConfig.VERSION_NAME;
                      valor_versao = valor_versao.replace(".", "");
                      Log.d("valor versão con", "" + valor_versao);
-//                     new LogarTask().execute(edtUsuario.getEditableText().toString(), edtSenha.getEditableText().toString(), edtCodAcesso.getEditableText().toString(), valor_versao);
+
+
+                     SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                     SharedPreferences.Editor editor = settings.edit();
+                     editor.putString("PrefUsuario", edtUsuario.getText().toString());
+
+                     editor.putString("Senha", edtSenha.getText().toString());
+
+                     editor.commit();
+
+
+                     Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+                     LoginActivity.this.startActivity(myIntent);
+
+                     finish();
+
                  }
             }
         });
