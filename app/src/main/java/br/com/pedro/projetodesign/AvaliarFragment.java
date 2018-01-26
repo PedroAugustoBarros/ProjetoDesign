@@ -26,6 +26,13 @@ public class AvaliarFragment extends Fragment {
     ImageView imageView_avaliar;
     Button butt_avaliar_comentario;
 
+
+    TextView txtView_estacionamento_sinopse;
+    TextView txtView_banheiros_sinopse;
+    TextView txtView_rampa_sinopse;
+    TextView txtView_mobiliario_sinopse;
+    TextView txtView_circulacao_sinopse;
+
     RatingBar ratingBar_avaliar_total;
 
     int posiçãoID;
@@ -62,6 +69,14 @@ public class AvaliarFragment extends Fragment {
         final RatingBar ratingBar_rampa = (RatingBar)view.findViewById(R.id.ratingBar_rampa);
         final RatingBar ratingBar_mobiliario = (RatingBar)view.findViewById(R.id.ratingBar_mobiliario);
         final RatingBar ratingBar_circulacao = (RatingBar)view.findViewById(R.id.ratingBar_circulacao);
+
+
+        txtView_estacionamento_sinopse = (TextView) view.findViewById(R.id.txtView_estacionamento_sinopse);
+        txtView_banheiros_sinopse = (TextView) view.findViewById(R.id.txtView_banheiros_sinopse);
+        txtView_rampa_sinopse = (TextView) view.findViewById(R.id.txtView_rampa_sinopse);
+        txtView_mobiliario_sinopse = (TextView) view.findViewById(R.id.txtView_mobiliario_sinopse);
+        txtView_circulacao_sinopse = (TextView) view.findViewById(R.id.txtView_circulacao_sinopse);
+
 
 
         textView_titulo_avaliar.setText(MyData.nameArray[posiçãoID]);
@@ -145,6 +160,127 @@ public class AvaliarFragment extends Fragment {
                 ft.commit();
             }
         });
+
+
+        //----------------------------------------------------
+
+
+        ratingBar_estacionamento.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+                int nota = (int)Math.round(ratingBar_estacionamento.getRating());
+
+                if (nota==0){
+                    txtView_estacionamento_sinopse.setText("");
+                }else if (nota==1){
+                    txtView_estacionamento_sinopse.setText("NÃO TEM");
+                }else if (nota==2){
+                    txtView_estacionamento_sinopse.setText("RUIM");
+                }else if (nota==3){
+                    txtView_estacionamento_sinopse.setText("REGULAR");
+                }else if (nota==4){
+                    txtView_estacionamento_sinopse.setText("BOM");
+                }else if (nota==5){
+                    txtView_estacionamento_sinopse.setText("MUITO BOM");
+                }
+            }
+        });
+
+        ratingBar_banheiros.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+                int nota = (int)Math.round(ratingBar_banheiros.getRating());
+
+                if (nota==0){
+                    txtView_banheiros_sinopse.setText("");
+                }else if (nota==1){
+                    txtView_banheiros_sinopse.setText("NÃO TEM");
+                }else if (nota==2){
+                    txtView_banheiros_sinopse.setText("RUIM");
+                }else if (nota==3){
+                    txtView_banheiros_sinopse.setText("REGULAR");
+                }else if (nota==4){
+                    txtView_banheiros_sinopse.setText("BOM");
+                }else if (nota==5){
+                    txtView_banheiros_sinopse.setText("MUITO BOM");
+                }
+            }
+        });
+
+        ratingBar_rampa.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+                int nota = (int)Math.round(ratingBar_rampa.getRating());
+
+                if (nota==0){
+                    txtView_rampa_sinopse.setText("");
+                }else if (nota==1){
+                    txtView_rampa_sinopse.setText("NÃO TEM");
+                }else if (nota==2){
+                    txtView_rampa_sinopse.setText("RUIM");
+                }else if (nota==3){
+                    txtView_rampa_sinopse.setText("REGULAR");
+                }else if (nota==4){
+                    txtView_rampa_sinopse.setText("BOM");
+                }else if (nota==5){
+                    txtView_rampa_sinopse.setText("MUITO BOM");
+                }
+            }
+        });
+
+        ratingBar_mobiliario.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+                int nota = (int)Math.round(ratingBar_mobiliario.getRating());
+
+                if (nota==0){
+                    txtView_mobiliario_sinopse.setText("");
+                }else if (nota==1){
+                    txtView_mobiliario_sinopse.setText("NÃO TEM");
+                }else if (nota==2){
+                    txtView_mobiliario_sinopse.setText("RUIM");
+                }else if (nota==3){
+                    txtView_mobiliario_sinopse.setText("REGULAR");
+                }else if (nota==4){
+                    txtView_mobiliario_sinopse.setText("BOM");
+                }else if (nota==5){
+                    txtView_mobiliario_sinopse.setText("MUITO BOM");
+                }
+            }
+        });
+
+        ratingBar_circulacao.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+                int nota = (int)Math.round(ratingBar_circulacao.getRating());
+
+                if (nota==0){
+                    txtView_circulacao_sinopse.setText("");
+                }else if (nota==1){
+                    txtView_circulacao_sinopse.setText("NÃO TEM");
+                }else if (nota==2){
+                    txtView_circulacao_sinopse.setText("RUIM");
+                }else if (nota==3){
+                    txtView_circulacao_sinopse.setText("REGULAR");
+                }else if (nota==4){
+                    txtView_circulacao_sinopse.setText("BOM");
+                }else if (nota==5){
+                    txtView_circulacao_sinopse.setText("MUITO BOM");
+                }
+            }
+        });
+
+
 
 
 

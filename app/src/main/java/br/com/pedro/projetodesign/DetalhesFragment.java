@@ -1,6 +1,7 @@
 package br.com.pedro.projetodesign;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ public class DetalhesFragment extends Fragment {
     String myValue;
 
     Button butt_avaliar;
+    ImageButton imageButton_mapa;
 
     public DetalhesFragment() {
         // Required empty public constructor
@@ -107,6 +110,19 @@ public class DetalhesFragment extends Fragment {
                 ft.commit();
             }
         });
+
+
+        imageButton_mapa = (ImageButton) view.findViewById(R.id.imageButton_mapa);
+        imageButton_mapa.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(getActivity(), MapsActivity.class);
+                myIntent.putExtra("key", myValue); //Optional parameters
+                getActivity().startActivity(myIntent);
+
+            }
+        });
+
 
 
         return view;
