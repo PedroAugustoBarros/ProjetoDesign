@@ -3,21 +3,17 @@ package br.com.pedro.projetodesign;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -34,7 +30,7 @@ public class ComentarioFragment extends Fragment {
     String nomeUsuario;
 
     String nomeArquivo;
-    int posiçãoID;
+    int posicao;
 
     RatingBar ratingBar_comentar_total;
 
@@ -47,7 +43,7 @@ public class ComentarioFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         valorSelecionado = ((MainActivity) getActivity()).valorSelecionado();
-        posiçãoID = Integer.parseInt(valorSelecionado);
+        posicao = Integer.parseInt(valorSelecionado);
 
 
         try {
@@ -73,13 +69,13 @@ public class ComentarioFragment extends Fragment {
         textView_corpo_comentar = (TextView) view.findViewById(R.id.textView_corpo_comentar);
         imageView_comentar = (ImageView) view.findViewById(R.id.imageView_comentar);
 
-        textView_titulo_comentar.setText(MyData.nameArray[posiçãoID]);
-        textView_corpo_comentar.setText(MyData.versionArray[posiçãoID]);
-        imageView_comentar.setImageResource(MyData.drawableArray[posiçãoID]);
+        textView_titulo_comentar.setText(MyData.nameArray[posicao]);
+        textView_corpo_comentar.setText(MyData.versionArray[posicao]);
+        imageView_comentar.setImageResource(MyData.drawableArray[posicao]);
 
         ratingBar_comentar_total = (RatingBar) view.findViewById(R.id.ratingBar_comentar_total);
 
-        String valor_nota = "" + posiçãoID;
+        String valor_nota = "" + posicao;
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         ratingBar_comentar_total.setRating(sharedPref.getInt(valor_nota, 0));
 
