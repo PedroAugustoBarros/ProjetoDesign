@@ -2,8 +2,10 @@ package br.com.pedro.projetodesign;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -19,18 +21,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, CustomAdapter.CustomAdapterListener {
 
 
-    private static RecyclerView.Adapter adapter;
+    private static CustomAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     private static ArrayList<DataModel> data;
-    static View.OnClickListener myOnClickListener;
     private static ArrayList<Integer> removedItems;
 
     String textoEnviar;
@@ -44,15 +46,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
 
         frameLayoutFrag = (FrameLayout) findViewById(R.id.frameLayoutFragment);
 
@@ -64,10 +57,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-//------------------------------------------
-
-        myOnClickListener = new MyOnClickListener(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -89,88 +78,34 @@ public class MainActivity extends AppCompatActivity
         removedItems = new ArrayList<Integer>();
 
         adapter = new CustomAdapter(data);
+        adapter.setListener(this);
         recyclerView.setAdapter(adapter);
 
     }
 
-    private class MyOnClickListener implements View.OnClickListener {
+    @Override
+    public void onClick(ImageView imageView, int listPosition) {
 
-        private final Context context;
+        Intent intent = new Intent(MainActivity.this, DetalheActivity.class);
 
-        private MyOnClickListener(Context context) {
-            this.context = context;
-        }
+        intent.putExtra("message", listPosition);
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(this, (View)imageView, "imagemDetalhe");
 
-        @Override
-        public void onClick(View v) {
-//            removeItem(v);
-            FragmentManager mFragmentManager;
-            mFragmentManager = getSupportFragmentManager();
-            FragmentTransaction ft = mFragmentManager.beginTransaction();
-
-            int selectedItemPosition = recyclerView.getChildPosition(v);
-            textoEnviar = Integer.toString(selectedItemPosition);
-            Bundle bundle = new Bundle();
-            String myMessage = textoEnviar;
-            bundle.putString("message", myMessage);
-//
-            DetalhesFragment compFragment = (DetalhesFragment) getSupportFragmentManager().findFragmentByTag("validar");
-
-            if (compFragment == null) {
-                compFragment = new DetalhesFragment();
-            }
-
-            compFragment.setArguments(bundle);
-
-            ft.replace(R.id.frameLayoutFragment, compFragment, "detalhes");
-            ft.addToBackStack("detalhes");
-            frameLayoutFrag.setVisibility(View.VISIBLE);
-            ft.commit();
-        }
+        startActivity(intent, options.toBundle());
 
     }
 
-
-//    @Override
-//    public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Sair")
-//                    .setMessage("Tem certeza que deseja sair?")
-//                    .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            finish();
-//                        }
-//                    }).setNegativeButton("Não", null).show();
-//        }
-//
-//    }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
-
-        return super.onOptionsItemSelected(item);
     }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

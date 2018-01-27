@@ -1,69 +1,69 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="br.com.pedro.projetodesign.ComentarioFragment">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <Button
+        android:id="@+id/butt_comentar"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_button"
+        android:layout_centerHorizontal="true"
+        android:text="comentar" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_green_dark">
+        android:layout_above="@+id/butt_comentar">
 
-        <Button
-            android:id="@+id/butt_comentar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="comentar" />
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/butt_comentar">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/imageView_comentar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:src="@drawable/ic_menu_camera" />
 
-                <ImageView
-                    android:id="@+id/imageView_comentar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_menu_camera" />
+            <TextView
+                android:id="@+id/textView_titulo_comentar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment" />
 
-                <TextView
-                    android:id="@+id/textView_titulo_comentar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hello_blank_fragment" />
+            <TextView
+                android:id="@+id/textView_corpo_comentar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
 
-                <TextView
-                    android:id="@+id/textView_corpo_comentar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
+            <RatingBar
+                android:id="@+id/ratingBar_comentar_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="1" />
 
-                <RatingBar
-                    android:id="@+id/ratingBar_comentar_total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:stepSize="1" />
-
-                <TextView
-                    android:id="@+id/textView_Comentarios_tudo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Comentários:" />
+            <TextView
+                android:id="@+id/textView_Comentarios_tudo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:text="Comentários:" />
 
 
-            </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
-    </RelativeLayout>
+</RelativeLayout>
 
-</FrameLayout>
+

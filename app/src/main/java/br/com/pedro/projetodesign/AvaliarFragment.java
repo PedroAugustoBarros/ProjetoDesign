@@ -35,7 +35,7 @@ public class AvaliarFragment extends Fragment {
 
     RatingBar ratingBar_avaliar_total;
 
-    int posiçãoID;
+    int posicao;
 
     public AvaliarFragment() {
         // Required empty public constructor
@@ -47,7 +47,7 @@ public class AvaliarFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
        valorSelecionado= ((MainActivity) getActivity()).valorSelecionado();
-        posiçãoID=Integer.parseInt(valorSelecionado);
+        posicao =Integer.parseInt(valorSelecionado);
     }
 
     @Override
@@ -79,16 +79,16 @@ public class AvaliarFragment extends Fragment {
 
 
 
-        textView_titulo_avaliar.setText(MyData.nameArray[posiçãoID]);
-        textView_corpo_avaliar.setText(MyData.versionArray[posiçãoID]);
-        imageView_avaliar.setImageResource(MyData.drawableArray[posiçãoID]);
+        textView_titulo_avaliar.setText(MyData.nameArray[posicao]);
+        textView_corpo_avaliar.setText(MyData.versionArray[posicao]);
+        imageView_avaliar.setImageResource(MyData.drawableArray[posicao]);
 
 
 
 
         ratingBar_avaliar_total = (RatingBar)view.findViewById(R.id.ratingBar_avaliar_total);
 
-        String valor_nota =""+posiçãoID;
+        String valor_nota =""+ posicao;
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         ratingBar_avaliar_total.setRating(sharedPref.getInt(valor_nota, 0));
 //        Log.d("nota_final_detalhes",""+sharedPref.getInt(valor_nota, 0));
@@ -113,7 +113,7 @@ public class AvaliarFragment extends Fragment {
 
 
                 SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                String valor_nota =""+posiçãoID;
+                String valor_nota =""+ posicao;
 
 
 
@@ -127,7 +127,7 @@ public class AvaliarFragment extends Fragment {
 
 //                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
-                String valor =""+posiçãoID;
+                String valor =""+ posicao;
                 editor.putInt(valor, nota_final);
                 editor.commit();
 

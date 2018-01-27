@@ -4,27 +4,15 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.appcompat.BuildConfig;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.text.DateFormat;
-import java.util.Date;
-
-import br.com.pedro.projetodesign.R;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -38,7 +26,7 @@ public class LoginActivity extends ActionBarActivity {
 
     private TextView txtVersao;
 
-    private ImageView imageView_LogoBancas;
+    private ImageView imgLogo;
 
     public static final String PREFS_NAME = "Nome Login";
     public static final String PREFS_NAME_COD = "Senha";
@@ -49,15 +37,11 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-
 
         assignViews();
         initListeners();
 
-        String versionName = BuildConfig.VERSION_NAME;
-        txtVersao.setText("Versão " + versionName);
+        txtVersao.setText("Versão " + BuildConfig.VERSION_CODE);
 
         //Recuperar login e colocar no Edittext Login
         try {
@@ -79,8 +63,6 @@ public class LoginActivity extends ActionBarActivity {
         }
 
 
-
-
     }
 
     private void assignViews() {
@@ -88,40 +70,40 @@ public class LoginActivity extends ActionBarActivity {
         edtSenha = (EditText) findViewById(R.id.edtSenha);
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
-        imageView_LogoBancas = (ImageView) findViewById(R.id.imageView_LogoBancas);
+        imgLogo = (ImageView) findViewById(R.id.imgLogo);
 
-        txtVersao = (TextView) findViewById(R.id.textView_versao);
+        txtVersao = (TextView) findViewById(R.id.tvVersao);
     }
 
     private void initListeners() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 if (edtUsuario.getEditableText().toString().isEmpty() || !(android.util.Patterns.EMAIL_ADDRESS.matcher(edtUsuario.getEditableText().toString()).matches())) {
+                if (edtUsuario.getEditableText().toString().isEmpty() || !(android.util.Patterns.EMAIL_ADDRESS.matcher(edtUsuario.getEditableText().toString()).matches())) {
                     edtUsuario.setError("Digite o endereço de email");
                 } else if (edtSenha.getEditableText().toString().isEmpty()) {
                     edtSenha.setError("Digite a senha");
-                }else{
-                     String valor_versao = BuildConfig.VERSION_NAME;
-                     valor_versao = valor_versao.replace(".", "");
-                     Log.d("valor versão con", "" + valor_versao);
+                } else {
+                    String valor_versao = BuildConfig.VERSION_NAME;
+                    valor_versao = valor_versao.replace(".", "");
+                    Log.d("valor versão con", "" + valor_versao);
 
 
-                     SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-                     SharedPreferences.Editor editor = settings.edit();
-                     editor.putString("PrefUsuario", edtUsuario.getText().toString());
+                    SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putString("PrefUsuario", edtUsuario.getText().toString());
 
-                     editor.putString("Senha", edtSenha.getText().toString());
+                    editor.putString("Senha", edtSenha.getText().toString());
 
-                     editor.commit();
+                    editor.commit();
 
 
-                     Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
-                     LoginActivity.this.startActivity(myIntent);
+                    Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    LoginActivity.this.startActivity(myIntent);
 
-                     finish();
+                    finish();
 
-                 }
+                }
             }
         });
 
@@ -129,11 +111,9 @@ public class LoginActivity extends ActionBarActivity {
     }
 
 
-
-
     /* Função para verificar existência de conexão com a internet
  */
-    public  boolean verificaConexao() {
+    public boolean verificaConexao() {
         boolean conectado;
         ConnectivityManager conectivtyManager = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
         if (conectivtyManager.getActiveNetworkInfo() != null

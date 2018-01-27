@@ -16,7 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    int posiçãoID;
+    int posicaoID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         Intent intent = getIntent();
-        String myValue = intent.getStringExtra("key"); //if it's a string you stored.
+        posicaoID = intent.getIntExtra("key", 0); //if it's a string you stored.
 
-
-        posiçãoID = Integer.parseInt(myValue);
-        Log.d("posiçãoID",""+posiçãoID);
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -55,9 +52,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap = googleMap;
 
-            String nomeLocal=MyData.nameArray[posiçãoID];
-            Double Lat=MyData.Lat[posiçãoID];
-            Double Long=MyData.Long[posiçãoID];
+            String nomeLocal=MyData.nameArray[posicaoID];
+            Double Lat=MyData.Lat[posicaoID];
+            Double Long=MyData.Long[posicaoID];
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(Lat,Long);
