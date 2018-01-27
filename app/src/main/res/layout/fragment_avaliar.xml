@@ -78,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_menu_camera" />
+                        app:srcCompat="@drawable/ic_directions_car_black_24dp" />
 
                     <RatingBar
                         android:id="@+id/ratingBar_estacionamento"
@@ -112,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_menu_camera" />
+                        app:srcCompat="@drawable/ic_wc_black_24dp" />
 
                     <RatingBar
                         android:id="@+id/ratingBar_banheiros"
@@ -145,7 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_menu_camera" />
+                        app:srcCompat="@drawable/ic_accessible_black_24dp" />
 
                     <RatingBar
                         android:id="@+id/ratingBar_rampa"
@@ -177,7 +177,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_menu_camera" />
+                        app:srcCompat="@drawable/ic_weekend_black_24dp" />
 
                     <RatingBar
                         android:id="@+id/ratingBar_mobiliario"
@@ -209,7 +209,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_menu_camera" />
+                        app:srcCompat="@drawable/ic_directions_walk_black_24dp" />
 
                     <RatingBar
                         android:id="@+id/ratingBar_circulacao"
