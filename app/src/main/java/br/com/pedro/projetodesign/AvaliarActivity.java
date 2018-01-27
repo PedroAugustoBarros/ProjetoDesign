@@ -1,6 +1,7 @@
 package br.com.pedro.projetodesign;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -101,7 +102,10 @@ public class AvaliarActivity extends AppCompatActivity {
         butt_avaliar_comentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(AvaliarActivity.this, ComentariosActivity.class);
+                intent.putExtra("posicao", posicao);
 
+                startActivity(intent);
             }
         });
 
