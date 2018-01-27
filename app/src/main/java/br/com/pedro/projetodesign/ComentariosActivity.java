@@ -3,6 +3,8 @@ package br.com.pedro.projetodesign;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -58,7 +60,6 @@ public class ComentariosActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-//                            edtUsuario.setText("");
         }
 
         textView_titulo_comentar = (TextView) findViewById(R.id.textView_titulo_comentar);
@@ -103,7 +104,6 @@ public class ComentariosActivity extends AppCompatActivity {
             textView_Comentarios_tudo.setText(readString);
 
 
-
             fis.close();
 
         } catch (Exception e) {
@@ -115,35 +115,50 @@ public class ComentariosActivity extends AppCompatActivity {
         }
 
 
-
-
         Button butt_comentar = (Button) findViewById(R.id.butt_comentar);
-        butt_comentar.setOnClickListener(new View.OnClickListener()
-        {
+        butt_comentar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
 
                 AlertDialog.Builder mensagem = new AlertDialog.Builder(ComentariosActivity.this);
                 mensagem.setTitle("Comentário");
                 mensagem.setMessage("Digite o seu comentário");
                 // DECLARACAO DO EDITTEXT
                 final EditText input = new EditText(ComentariosActivity.this);
+
+
+
+                int[][] states = new int[][]{
+                        new int[]{android.R.attr.state_focused},
+                        new int[]{android.R.attr.state_active },
+                        new int[]{ -android.R.attr.state_enabled},
+                        new int[]{android.R.attr.state_enabled},
+                };
+
+                int[] colors = new int[]{
+                        R.color.colorPrimaryDark,
+                        R.color.colorPrimaryDark,
+                        R.color.colorPrimaryDark,
+                        R.color.colorPrimaryDark
+                };
+
+                ColorStateList myList = new ColorStateList(states, colors);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    input.setBackgroundTintList(myList);
+                }
+
+
                 mensagem.setView(input);
-                mensagem.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                mensagem.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
 
-//                Toast.makeText(getApplicationContext(), input.getText().toString().trim(),Toast.LENGTH_SHORT).show();
-
-
-
-
                         FileOutputStream fos = null;
                         try {
-                            comentariosTudo=textView_Comentarios_tudo.getText().toString();
-                            String texto=comentariosTudo+"\n\n"+nomeUsuario+"\n"+input.getText().toString()+"\n_____________________________________\n";
-                            textView_Comentarios_tudo.setText(comentariosTudo+"\n"+nomeUsuario+"\n"+input.getText().toString()+"\n_____________________________________\n");
+                            comentariosTudo = textView_Comentarios_tudo.getText().toString();
+                            String texto = comentariosTudo + "\n\n" + nomeUsuario + "\n" + input.getText().toString() + "\n_____________________________________\n";
+                            textView_Comentarios_tudo.setText(comentariosTudo + "\n" + nomeUsuario + "\n" + input.getText().toString() + "\n_____________________________________\n");
 
                             fos = ComentariosActivity.this.openFileOutput(nomeArquivo, Context.MODE_PRIVATE);
                             fos.write(texto.getBytes());
